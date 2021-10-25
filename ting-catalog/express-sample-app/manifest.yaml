@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5f1863d33542e5c145acf4c42eda17ad01b60c72
+    app.openshift.io/vcs-ref: a75312e2a71a240ee7856700665714ade84bf0d0
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/ting-tekton-express
   labels:
     app.kubernetes.io/instance: express-sample-app
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5f1863d33542e5c145acf4c42eda17ad01b60c72
+    app.openshift.io/vcs-ref: a75312e2a71a240ee7856700665714ade84bf0d0
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/ting-tekton-express
   labels:
     app.kubernetes.io/instance: express-sample-app
@@ -42,7 +42,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: 5f1863d33542e5c145acf4c42eda17ad01b60c72
+        app.openshift.io/vcs-ref: a75312e2a71a240ee7856700665714ade84bf0d0
         app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/ting-tekton-express
       labels:
         app.kubernetes.io/instance: express-sample-app
@@ -54,7 +54,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/jm_carnicero/express-assignment:5f1863d33542e5c145acf4c42eda17ad01b60c72
+        image: quay.io/jm_carnicero/express-assignment:a75312e2a71a240ee7856700665714ade84bf0d0
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -92,7 +92,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5f1863d33542e5c145acf4c42eda17ad01b60c72
+    app.openshift.io/vcs-ref: a75312e2a71a240ee7856700665714ade84bf0d0
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/ting-tekton-express
   labels:
     app.kubernetes.io/instance: express-sample-app

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5f564fe7b128a545845db1e4737c2474a0ae39a1
+    app.openshift.io/vcs-ref: 1357a0881185098251acb4985649e55e7a9099b4
     app.openshift.io/vcs-uri: https://github.com/davidbieder/express-sample-app
   labels:
     app.kubernetes.io/instance: express-sample-app
@@ -24,11 +24,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5f564fe7b128a545845db1e4737c2474a0ae39a1
+    app.openshift.io/vcs-ref: 1357a0881185098251acb4985649e55e7a9099b4
     app.openshift.io/vcs-uri: https://github.com/davidbieder/express-sample-app
   labels:
     app.kubernetes.io/instance: express-sample-app
     app.kubernetes.io/name: express-sample-app
+    app.openshift.io/runtime: js
   name: express-sample-app
 spec:
   progressDeadlineSeconds: 600
@@ -41,7 +42,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: 5f564fe7b128a545845db1e4737c2474a0ae39a1
+        app.openshift.io/vcs-ref: 1357a0881185098251acb4985649e55e7a9099b4
         app.openshift.io/vcs-uri: https://github.com/davidbieder/express-sample-app
       labels:
         app.kubernetes.io/instance: express-sample-app
@@ -53,7 +54,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/davidbieder/express-sample-app:5f564fe7b128a545845db1e4737c2474a0ae39a1
+        image: quay.io/davidbieder/express-sample-app:1357a0881185098251acb4985649e55e7a9099b4
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -91,7 +92,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5f564fe7b128a545845db1e4737c2474a0ae39a1
+    app.openshift.io/vcs-ref: 1357a0881185098251acb4985649e55e7a9099b4
     app.openshift.io/vcs-uri: https://github.com/davidbieder/express-sample-app
   labels:
     app.kubernetes.io/instance: express-sample-app

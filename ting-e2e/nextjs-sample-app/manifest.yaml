@@ -2,12 +2,12 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f102384b19fdd5d2a256043e6218252bfe6e3779
+    app.openshift.io/vcs-ref: 66b014add667689ba2a17821af36c758921afac2
     app.openshift.io/vcs-uri: https://github.com/fbh112/e2e_nextjs
   labels:
     app.kubernetes.io/instance: nextjs-sample-app
     app.kubernetes.io/name: nextjs-sample-app
-  name: express-sample-app
+  name: nextjs-sample-app
 spec:
   ports:
   - name: http
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f102384b19fdd5d2a256043e6218252bfe6e3779
+    app.openshift.io/vcs-ref: 66b014add667689ba2a17821af36c758921afac2
     app.openshift.io/vcs-uri: https://github.com/fbh112/e2e_nextjs
   labels:
     app.kubernetes.io/instance: nextjs-sample-app
@@ -42,7 +42,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: f102384b19fdd5d2a256043e6218252bfe6e3779
+        app.openshift.io/vcs-ref: 66b014add667689ba2a17821af36c758921afac2
         app.openshift.io/vcs-uri: https://github.com/fbh112/e2e_nextjs
       labels:
         app.kubernetes.io/instance: nextjs-sample-app
@@ -54,7 +54,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/ting_wu/e2e_nextjs:f102384b19fdd5d2a256043e6218252bfe6e3779
+        image: quay.io/ting_wu/e2e_nextjs:66b014add667689ba2a17821af36c758921afac2
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -92,13 +92,15 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f102384b19fdd5d2a256043e6218252bfe6e3779
+    app.openshift.io/vcs-ref: 66b014add667689ba2a17821af36c758921afac2
     app.openshift.io/vcs-uri: https://github.com/fbh112/e2e_nextjs
   labels:
     app.kubernetes.io/instance: nextjs-sample-app
     app.kubernetes.io/name: nextjs-sample-app
   name: nextjs-sample-app
 spec:
+  port:
+    targetPort: 3000
   tls:
     termination: edge
   to:

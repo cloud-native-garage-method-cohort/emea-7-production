@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f4466887bc2865f90955c751c8896f31af6c4e38
+    app.openshift.io/vcs-ref: 8f15875d47cad85e8f5b717dc3b04b8c7ab823b6
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/emea-7-hufnagel-kustomize-trigger
   labels:
     app.kubernetes.io/instance: express-sample-app
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f4466887bc2865f90955c751c8896f31af6c4e38
+    app.openshift.io/vcs-ref: 8f15875d47cad85e8f5b717dc3b04b8c7ab823b6
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/emea-7-hufnagel-kustomize-trigger
   labels:
     app.kubernetes.io/instance: express-sample-app
@@ -42,7 +42,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: f4466887bc2865f90955c751c8896f31af6c4e38
+        app.openshift.io/vcs-ref: 8f15875d47cad85e8f5b717dc3b04b8c7ab823b6
         app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/emea-7-hufnagel-kustomize-trigger
       labels:
         app.kubernetes.io/instance: express-sample-app
@@ -54,7 +54,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/christian_hufnagel/express-sample-app:f4466887bc2865f90955c751c8896f31af6c4e38
+        image: quay.io/christian_hufnagel/express-sample-app:8f15875d47cad85e8f5b717dc3b04b8c7ab823b6
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -92,7 +92,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f4466887bc2865f90955c751c8896f31af6c4e38
+    app.openshift.io/vcs-ref: 8f15875d47cad85e8f5b717dc3b04b8c7ab823b6
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/emea-7-hufnagel-kustomize-trigger
   labels:
     app.kubernetes.io/instance: express-sample-app

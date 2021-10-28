@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: dd2f9f9a14a4570ac6f3b04d4235a0b363c1c335
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/cayo-moraes-next
+  labels:
+    app.kubernetes.io/instance: cayo-next
+    app.kubernetes.io/name: cayo-next
+  name: cayo-next-service
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: cayo-next
+    app.kubernetes.io/instance: cayo-next
+    app.kubernetes.io/name: cayo-next
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: dd2f9f9a14a4570ac6f3b04d4235a0b363c1c335
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/cayo-moraes-next
+  labels:
+    app: cayo-next
+    app.kubernetes.io/instance: cayo-next
+    app.kubernetes.io/name: cayo-next
+  name: cayo-next
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cayo-next
+      app.kubernetes.io/instance: cayo-next
+      app.kubernetes.io/name: cayo-next
+  template:
+    metadata:
+      annotations:
+        app.openshift.io/vcs-ref: dd2f9f9a14a4570ac6f3b04d4235a0b363c1c335
+        app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/cayo-moraes-next
+      labels:
+        app: cayo-next
+        app.kubernetes.io/instance: cayo-next
+        app.kubernetes.io/name: cayo-next
+    spec:
+      containers:
+      - image: quay.io/cayops/cayo-next:dd2f9f9a14a4570ac6f3b04d4235a0b363c1c335
+        name: nextjs
+        ports:
+        - containerPort: 3000
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: dd2f9f9a14a4570ac6f3b04d4235a0b363c1c335
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/cayo-moraes-next
+  labels:
+    app.kubernetes.io/instance: cayo-next
+    app.kubernetes.io/name: cayo-next
+  name: cayo-next-route
+spec:
+  to:
+    kind: Service
+    name: cayo-next-service

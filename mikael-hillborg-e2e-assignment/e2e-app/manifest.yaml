@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5dfbf66f77d44e492261c591bcff4f9a23463da3
+    app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
     app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
   labels:
     app.kubernetes.io/instance: e2e-app
@@ -24,12 +24,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5dfbf66f77d44e492261c591bcff4f9a23463da3
+    app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
     app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
   labels:
     app.kubernetes.io/instance: e2e-app
     app.kubernetes.io/name: e2e-app
-  name: express-sample-app
+  name: e2e-app
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -41,7 +41,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: 5dfbf66f77d44e492261c591bcff4f9a23463da3
+        app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
         app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
       labels:
         app.kubernetes.io/instance: e2e-app
@@ -53,31 +53,13 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/mhillb/e2e-app:5dfbf66f77d44e492261c591bcff4f9a23463da3
+        image: quay.io/mhillb/e2e-app:2c0f9146aca6828b7d5770845601bf0b68fff4f5
         imagePullPolicy: IfNotPresent
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: 3000
-            scheme: HTTP
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
-        name: express-sample-app
+        name: e2e-app
         ports:
         - containerPort: 3000
           name: http
           protocol: TCP
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /
-            port: http
-            scheme: HTTP
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 1
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
@@ -91,7 +73,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: 5dfbf66f77d44e492261c591bcff4f9a23463da3
+    app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
     app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
   labels:
     app.kubernetes.io/instance: e2e-app

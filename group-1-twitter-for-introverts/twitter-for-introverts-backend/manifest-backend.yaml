@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+    app.openshift.io/vcs-ref: 2482cc4baac52675142755691fb7e2f3f4679596
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
   labels:
     app.kubernetes.io/instance: twitter-for-introverts-backend
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+    app.openshift.io/vcs-ref: 2482cc4baac52675142755691fb7e2f3f4679596
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
   labels:
     app.kubernetes.io/instance: twitter-for-introverts-backend
@@ -42,7 +42,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+        app.openshift.io/vcs-ref: 2482cc4baac52675142755691fb7e2f3f4679596
         app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
       labels:
         app.kubernetes.io/instance: twitter-for-introverts-backend
@@ -54,7 +54,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/james_grimshaw_ibm/group-1-twitter-introverts-backend:d014f19a7855c3d3921ca3a208a04ebdf207a118
+        image: quay.io/james_grimshaw_ibm/group-1-twitter-introverts-backend:2482cc4baac52675142755691fb7e2f3f4679596
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -92,7 +92,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+    app.openshift.io/vcs-ref: 2482cc4baac52675142755691fb7e2f3f4679596
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
   labels:
     app.kubernetes.io/instance: twitter-for-introverts-backend

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f171b528a76f1284b5c066c2a9acc53fde1cc254
+    app.openshift.io/vcs-ref: 4e18bd647631b1e91bb7c0d4d20016bcfe4b7f5c
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
   labels:
     app.kubernetes.io/instance: twitter-for-introverts-frontend
@@ -24,7 +24,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f171b528a76f1284b5c066c2a9acc53fde1cc254
+    app.openshift.io/vcs-ref: 4e18bd647631b1e91bb7c0d4d20016bcfe4b7f5c
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
   labels:
     app.kubernetes.io/instance: twitter-for-introverts-frontend
@@ -42,7 +42,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: f171b528a76f1284b5c066c2a9acc53fde1cc254
+        app.openshift.io/vcs-ref: 4e18bd647631b1e91bb7c0d4d20016bcfe4b7f5c
         app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
       labels:
         app.kubernetes.io/instance: twitter-for-introverts-frontend
@@ -54,7 +54,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/james_grimshaw_ibm/group-1-twitter-introverts:f171b528a76f1284b5c066c2a9acc53fde1cc254
+        image: quay.io/james_grimshaw_ibm/group-1-twitter-introverts:4e18bd647631b1e91bb7c0d4d20016bcfe4b7f5c
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -92,7 +92,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: f171b528a76f1284b5c066c2a9acc53fde1cc254
+    app.openshift.io/vcs-ref: 4e18bd647631b1e91bb7c0d4d20016bcfe4b7f5c
     app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
   labels:
     app.kubernetes.io/instance: twitter-for-introverts-frontend

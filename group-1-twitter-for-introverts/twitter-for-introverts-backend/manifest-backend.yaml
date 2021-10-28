@@ -1,0 +1,108 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
+  labels:
+    app.kubernetes.io/instance: twitter-for-introverts-backend
+    app.kubernetes.io/name: twitter-for-introverts-backend
+  name: twitter-for-introverts-backend
+spec:
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app.kubernetes.io/instance: twitter-for-introverts-backend
+    app.kubernetes.io/name: twitter-for-introverts-backend
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
+  labels:
+    app.kubernetes.io/instance: twitter-for-introverts-backend
+    app.kubernetes.io/name: twitter-for-introverts-backend
+    app.openshift.io/runtime: js
+  name: twitter-for-introverts-backend
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: twitter-for-introverts-backend
+      app.kubernetes.io/name: twitter-for-introverts-backend
+  template:
+    metadata:
+      annotations:
+        app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+        app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
+      labels:
+        app.kubernetes.io/instance: twitter-for-introverts-backend
+        app.kubernetes.io/name: twitter-for-introverts-backend
+    spec:
+      containers:
+      - env:
+        - name: INGRESS_HOST
+        - name: PROTOCOLS
+        - name: LOG_LEVEL
+          value: debug
+        image: quay.io/james_grimshaw_ibm/group-1-twitter-introverts-backend:d014f19a7855c3d3921ca3a208a04ebdf207a118
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 3000
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: twitter-for-introverts-backend
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: http
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: d014f19a7855c3d3921ca3a208a04ebdf207a118
+    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/group-1-twitter-for-introverts
+  labels:
+    app.kubernetes.io/instance: twitter-for-introverts-backend
+    app.kubernetes.io/name: twitter-for-introverts-backend
+  name: twitter-for-introverts-backend
+spec:
+  tls:
+    termination: edge
+  to:
+    kind: Service
+    name: twitter-for-introverts-backend
+    weight: 100
+  wildcardPolicy: None

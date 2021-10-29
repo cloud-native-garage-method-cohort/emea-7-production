@@ -2,18 +2,18 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: ae308bc8bf6a92f157fd2a26342a2dcd54a2daac
-    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/till-e2e-assignment-app.git
+    app.openshift.io/vcs-ref: 3e8bfc10842a30899097a716c760d011e5dce68f
+    app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api.git
   labels:
     app.kubernetes.io/instance: tkn-e2e-assignment
     app.kubernetes.io/name: tkn-e2e-assignment
-  name: express-sample-app
+  name: facts-api
 spec:
   ports:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 3000
+    targetPort: 8000
   selector:
     app.kubernetes.io/instance: tkn-e2e-assignment
     app.kubernetes.io/name: tkn-e2e-assignment
@@ -24,13 +24,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: ae308bc8bf6a92f157fd2a26342a2dcd54a2daac
-    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/till-e2e-assignment-app.git
+    app.openshift.io/vcs-ref: 3e8bfc10842a30899097a716c760d011e5dce68f
+    app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api.git
   labels:
     app.kubernetes.io/instance: tkn-e2e-assignment
     app.kubernetes.io/name: tkn-e2e-assignment
     app.openshift.io/runtime: js
-  name: express-sample-app
+  name: facts-api
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -42,8 +42,8 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: ae308bc8bf6a92f157fd2a26342a2dcd54a2daac
-        app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/till-e2e-assignment-app.git
+        app.openshift.io/vcs-ref: 3e8bfc10842a30899097a716c760d011e5dce68f
+        app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api.git
       labels:
         app.kubernetes.io/instance: tkn-e2e-assignment
         app.kubernetes.io/name: tkn-e2e-assignment
@@ -54,20 +54,20 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/tillus/cnb-tkn-e2e-assignment:ae308bc8bf6a92f157fd2a26342a2dcd54a2daac
+        image: quay.io/tillus/facts-api:3e8bfc10842a30899097a716c760d011e5dce68f
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /
-            port: 3000
+            port: 8000
             scheme: HTTP
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 1
-        name: express-sample-app
+        name: facts-api
         ports:
-        - containerPort: 3000
+        - containerPort: 8000
           name: http
           protocol: TCP
         readinessProbe:
@@ -92,17 +92,17 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: ae308bc8bf6a92f157fd2a26342a2dcd54a2daac
-    app.openshift.io/vcs-uri: https://github.com/cloud-native-garage-method-cohort/till-e2e-assignment-app.git
+    app.openshift.io/vcs-ref: 3e8bfc10842a30899097a716c760d011e5dce68f
+    app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api.git
   labels:
     app.kubernetes.io/instance: tkn-e2e-assignment
     app.kubernetes.io/name: tkn-e2e-assignment
-  name: express-sample-app
+  name: facts-api
 spec:
   tls:
     termination: edge
   to:
     kind: Service
-    name: express-sample-app
+    name: facts-api
     weight: 100
   wildcardPolicy: None

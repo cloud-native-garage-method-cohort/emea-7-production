@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
-    app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
+    app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app
   labels:
     app.kubernetes.io/instance: e2e-app
     app.kubernetes.io/name: e2e-app
@@ -25,7 +25,7 @@ kind: Deployment
 metadata:
   annotations:
     app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
-    app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
+    app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app
   labels:
     app.kubernetes.io/instance: e2e-app
     app.kubernetes.io/name: e2e-app
@@ -42,7 +42,7 @@ spec:
     metadata:
       annotations:
         app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
-        app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
+        app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app
       labels:
         app.kubernetes.io/instance: e2e-app
         app.kubernetes.io/name: e2e-app
@@ -74,7 +74,7 @@ kind: Route
 metadata:
   annotations:
     app.openshift.io/vcs-ref: 2c0f9146aca6828b7d5770845601bf0b68fff4f5
-    app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app.git
+    app.openshift.io/vcs-uri: https://github.com/mhillb/e2e-app
   labels:
     app.kubernetes.io/instance: e2e-app
     app.kubernetes.io/name: e2e-app

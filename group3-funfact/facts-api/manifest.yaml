@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: d9d6e5376a6e9a914910a48361e56eb8a6201bef
+    app.openshift.io/vcs-ref: 4cb9a5af62f54f056f9ccae747430177f979b9bb
     app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api
   labels:
     app.kubernetes.io/instance: facts-api
@@ -24,12 +24,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: d9d6e5376a6e9a914910a48361e56eb8a6201bef
+    app.openshift.io/vcs-ref: 4cb9a5af62f54f056f9ccae747430177f979b9bb
     app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api
   labels:
     app.kubernetes.io/instance: facts-api
     app.kubernetes.io/name: facts-api
-    app.openshift.io/runtime: js
+    app.openshift.io/runtime: python
   name: facts-api
 spec:
   progressDeadlineSeconds: 600
@@ -42,7 +42,7 @@ spec:
   template:
     metadata:
       annotations:
-        app.openshift.io/vcs-ref: d9d6e5376a6e9a914910a48361e56eb8a6201bef
+        app.openshift.io/vcs-ref: 4cb9a5af62f54f056f9ccae747430177f979b9bb
         app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api
       labels:
         app.kubernetes.io/instance: facts-api
@@ -54,7 +54,7 @@ spec:
         - name: PROTOCOLS
         - name: LOG_LEVEL
           value: debug
-        image: quay.io/tillus/facts-api:d9d6e5376a6e9a914910a48361e56eb8a6201bef
+        image: quay.io/tillus/facts-api:4cb9a5af62f54f056f9ccae747430177f979b9bb
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3
@@ -92,7 +92,7 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   annotations:
-    app.openshift.io/vcs-ref: d9d6e5376a6e9a914910a48361e56eb8a6201bef
+    app.openshift.io/vcs-ref: 4cb9a5af62f54f056f9ccae747430177f979b9bb
     app.openshift.io/vcs-uri: https://github.com/tbrodbeck/facts-api
   labels:
     app.kubernetes.io/instance: facts-api
